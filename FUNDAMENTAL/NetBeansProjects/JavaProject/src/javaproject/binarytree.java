@@ -1,10 +1,6 @@
 
 package javaproject;
-
-
 public class binarytree {
-    
-    
 public static class node{
     
     public int data;
@@ -99,6 +95,86 @@ public static class BT{
     }
     
     
+      public node get_root()
+      {
+          return root;
+      }
+      
+      public int max(node current){
+          
+          
+          
+          if(current==null)
+          {
+              return max;
+              
+          }
+          if(current.data>max)
+              max=current.data;
+          
+          max=max(current.lift);
+          max=max(current.right);
+          
+          
+          return max;
+          
+      }
+      
+      public int gethight(node current){
+          
+          
+          if(current==null){
+          
+              return 0;
+          }
+          
+         
+          
+          int lifthight=gethight(current.lift);
+          int righthight=gethight(current.right);
+          
+          return Math.max(lifthight, righthight)+1;
+          
+      }
+      
+      public int countallnodes(node current)
+      {
+          if(current==null)
+            {
+          
+                 return 0;
+              
+            }      
+          
+       int lifthight=countallnodes(current.lift);
+       int righthight=countallnodes(current.right);
+      
+       
+       return righthight+lifthight+1;
+      
+    }
+      
+       public int countleafnodes(node current)
+      {
+         if(current==null)
+            {
+          
+                 return 0;
+              
+            }      
+          
+       int lifthight=countleafnodes(current.lift);
+       int righthight=countleafnodes(current.right);
+      
+       
+       return righthight+lifthight+1;
+      
+    }
+      
+       
+       
+       
+       
       public void preprint(node current){
         
         
@@ -131,67 +207,6 @@ public static class BT{
       
     }
       
-      public node get_root()
-      {
-          return root;
-      }
-      
-      
-      
-      
-      
-      public int max(node current){
-          
-          
-          
-          if(current==null)
-          {
-              return max;
-              
-          }
-          if(current.data>max)
-              max=current.data;
-          
-          max=max(current.lift);
-          max=max(current.right);
-          
-          
-          return max;
-          
-      }
-      
-      
-      
-      public int gethight(node current){
-          
-          
-          if(current==null){
-          
-              return 0;
-          }
-          
-         
-          
-          int lifthight=gethight(current.lift);
-          int righthight=gethight(current.right);
-          
-          return Math.max(lifthight, righthight)+1;
-          
-      }
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-}
 
+}
 }
