@@ -23,6 +23,7 @@ public static class BT{
     private node root;
     private int max;
     private int hight; 
+    private int leafs;
     
     
     public BT(int val){
@@ -38,42 +39,26 @@ public static class BT{
         return root.lift==null&&root.right==null;
     }
     
-    public void add(int data)
-    {
-            node newnode=new node(data);
+    
+    node addRecursive(node current, int value) {
+        if (current == null) {
+            return new node(value);
+        }
 
-                node temp=root;
-                while(true)
-                {
-                    
-                    if(newnode.data>=temp.data)
-                    {
-                        if(temp.right!=null) 
-                            temp=temp.right;
-                        
-                        else
-                        {
-                            temp.right=newnode;
-                            return;
-                        }
-                        
-                    }
-                    
-                    else if(newnode.data<temp.data)
-                    {
-                        if(temp.lift!=null)
-                            temp=temp.lift;
-                        else{
-                            
-                            temp.lift=newnode;
-                            return;
-                        }
-                    
-                    }
-                    
-                }
-       
+        if (value < current.data) {
+            current.lift = addRecursive(current.lift, value);
+        } else if (value > current.data) {
+            current.right = addRecursive(current.right, value);
+        } else {
+            // value already exists
+            return current;
+        }
+
+        return current;
     }
+    
+    
+    
     
     public void postprint(node current){
         
@@ -130,10 +115,9 @@ public static class BT{
           
          
           
-          int lifthight=gethight(current.lift);
-          int righthight=gethight(current.right);
+            return Math.max( gethight(current.lift),gethight(current.right))+1;
+        
           
-          return Math.max(lifthight, righthight)+1;
           
       }
       
@@ -153,26 +137,52 @@ public static class BT{
        return righthight+lifthight+1;
       
     }
-      
-       public int countleafnodes(node current)
-      {
-         if(current==null)
-            {
-          
-                 return 0;
-              
-            }      
-          
-       int lifthight=countleafnodes(current.lift);
-       int righthight=countleafnodes(current.right);
-      
-       
-       return righthight+lifthight+1;
-      
+      public int countLeafNodes(node current) {
+    if (current == null) {
+        return 0;
     }
+    if (current.lift == null && current.right == null) {
+        return 1;
+    }
+    return countLeafNodes(current.lift) + countLeafNodes(current.right);
+}
+
+       
       
+      
+    public boolean searchingtree(node current,int val) {
+    if (current == null) {
+        return false;
+    }
+    if (current.data == val ) {
+        return true;
+    }
+    return searchingtree(current.lift,val)||     searchingtree(current.right,val);
+
+        
+    
+     
+}
+
        
-       
+    
+    
+    
+    
+    
+    public  boolean is_perfect(node current){
+        
+        int num=countallnodes(current);
+        int hight=gethight(current)-1;
+        if(num==Math.pow(2, hight+1)-1)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+        
+    }
        
        
       public void preprint(node current){
