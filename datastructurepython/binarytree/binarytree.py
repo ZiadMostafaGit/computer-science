@@ -83,9 +83,13 @@ class BinaryTree:
        
        
        
-    def print_inorder_iterative(self):
+       
+       
+       
+       
+    def print_inorder_iterative(self,cur):
         nodes = []
-        nodes.append((self, False))
+        nodes.append((cur, False))
 
         while nodes:
             current, is_done = nodes.pop()
