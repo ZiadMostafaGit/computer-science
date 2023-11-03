@@ -1,10 +1,13 @@
 import helperfile as hf
+
+
 # import turtle
 class Node:
     def __init__(self, value):
         self.data = value
         self.left = None
         self.right = None
+
 
 class BinaryTree:
     def __init__(self, value):
@@ -21,6 +24,18 @@ class BinaryTree:
 
         return current
 
+    def printBoundaryLeft(self, root):
+        if root:
+            if root.left:
+                # to ensure top down order, print the node
+                # before calling itself for left subtree
+                print(root.data, end=" ")
+                self.printBoundaryLeft(root.left)
+
+            elif root.right:
+                print(root.data, end=" ")
+                self.printBoundaryLeft(root.right)
+
     def post_order_print(self, current):
         if current is None:
             return
@@ -30,7 +45,7 @@ class BinaryTree:
 
     def get_max(self, current):
         if current is None:
-            return float('-inf')
+            return float("-inf")
         max_value = current.data
         left_max = self.get_max(current.left)
         right_max = self.get_max(current.right)
@@ -45,21 +60,27 @@ class BinaryTree:
     def count_all_nodes(self, current):
         if current is None:
             return 0
-        return self.count_all_nodes(current.left) + self.count_all_nodes(current.right) + 1
+        return (
+            self.count_all_nodes(current.left) + self.count_all_nodes(current.right) + 1
+        )
 
     def count_leaf_nodes(self, current):
         if current is None:
             return 0
         if current.left is None and current.right is None:
             return 1
-        return self.count_leaf_nodes(current.left) + self.count_leaf_nodes(current.right)
+        return self.count_leaf_nodes(current.left) + self.count_leaf_nodes(
+            current.right
+        )
 
     def search_tree(self, current, value):
         if current is None:
             return False
         if current.data == value:
             return True
-        return self.search_tree(current.left, value) or self.search_tree(current.right, value)
+        return self.search_tree(current.left, value) or self.search_tree(
+            current.right, value
+        )
 
     def is_perfect(self, current):
         num = self.count_all_nodes(current)
@@ -79,15 +100,8 @@ class BinaryTree:
         self.in_order_print(current.left)
         print(current.data, end=" ")
         self.in_order_print(current.right)
-       
-       
-       
-       
-       
-       
-       
-       
-    def print_inorder_iterative(self,cur):
+
+    def print_inorder_iterative(self, cur):
         nodes = []
         nodes.append((cur, False))
 
@@ -106,11 +120,9 @@ class BinaryTree:
                     nodes.append((current.left, False))
         print("\n")
 
-        
-        
-        
-        
-   
+
+#
+
 # def draw_tree(turtle, node, x, y, x_dist, y_dist):
 #     if node is not None:
 #         turtle.penup()
@@ -121,14 +133,14 @@ class BinaryTree:
 #         turtle.goto(x, y - 20)
 #         turtle.pendown()
 #         turtle.write(str(node.data), align="center", font=("Arial", 12, "normal"))
-        
+
 #         if node.left:
 #             turtle.penup()
 #             turtle.goto(x - x_dist, y - y_dist)
 #             turtle.pendown()
 #             turtle.goto(x, y)
 #             draw_tree(turtle, node.left, x - x_dist, y - y_dist, x_dist / 2, y_dist - 50)
-            
+
 #         if node.right:
 #             turtle.penup()
 #             turtle.goto(x + x_dist, y - y_dist)
@@ -152,4 +164,26 @@ class BinaryTree:
 # turtle.hideturtle()
 # draw_tree(turtle, binary_tree.root, 0, 200, 300, 100)
 # screen.update()
-# turtle.done()    
+# turtle.done()
+
+
+# #
+#  def left_boundary(self, cur):
+#         if self == None:
+#             return
+#         if cur.left:
+#             print(cur.data, end=" ")
+
+#         self.left_boundary(cur.left)
+#         self.left_boundary(cur.right)
+# #
+
+# def left_boundary(self, cur):
+#         if cur == None:
+#             return
+#         if cur.left:
+#             print(cur.data, end=" ")
+#             self.left_boundary(cur.left)
+
+#         else:
+#             self.left_boundary(cur.right)
