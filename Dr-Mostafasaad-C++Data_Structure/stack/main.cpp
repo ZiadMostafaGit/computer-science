@@ -4,7 +4,7 @@
 int main()
 {
 
-	stack<char> s1(10);
+	stack<int> s1(10);
 
 	// string s;
 	// getline(cin, s);
