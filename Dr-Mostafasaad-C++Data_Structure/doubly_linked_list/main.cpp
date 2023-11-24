@@ -76,5 +76,5 @@ int main()
     //     // linked1.printback();
     //     linked1.printfornt();
     // }
-    //hieveryone
+    // hieveryone
 }

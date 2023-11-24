@@ -12,7 +12,8 @@ if __name__ == "__main__":
     binary_tree.add_recursive(binary_tree.root, 7)
     binary_tree.add_recursive(binary_tree.root, 17)
     binary_tree.add_recursive(binary_tree.root, 30)
-    binary_tree.printBoundaryLeft(binary_tree.root)
+
+    binary_tree.post_order_print(binary_tree.root)
 
     # print("inorder Traversal: ", end="")
     # binary_tree.in_order_print(binary_tree.root)

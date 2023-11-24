@@ -23,16 +23,16 @@ int main()
 	// 	}
 	// }
 	// s1.print();
-	// s1.push(10);
-	// s1.push(20);
-	// s1.push(30);
-	// s1.push(40);
-	// s1.push(50);
-	// s1.push(60);
-	// s1.push(70);
-	// s1.print();
-	// s1.reverse();
-	// s1.print();
+	 s1.push(10);
+	 s1.push(20);
+	 s1.push(30);
+	 s1.push(40);
+	 s1.push(50);
+	 s1.push(60);
+	 s1.push(70);
+	 s1.print();
+	 s1.reverse();
+	 s1.print();
 	// string s = "()()()(()()){}{}(((()))}([])()[]{}{[]}";
 	// cout << s1.Valid_Parentheses(s) << endl;
 
