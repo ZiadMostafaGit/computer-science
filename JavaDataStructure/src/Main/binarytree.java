@@ -1,6 +1,6 @@
 
-package Main;
-
+    package Main;
+    import java.util.Stack;
 /**
  *
  * @author ziad
@@ -24,6 +24,20 @@ public class binarytree {
     };
 
 
+
+    public static class Pair{
+        node Node;
+        boolean flag;
+         public  Pair(node current,boolean f){
+            flag=f;
+            Node=current;
+        }
+
+    };
+
+
+
+
     public static class BT{
 
         private node root;
@@ -39,6 +53,48 @@ public class binarytree {
             hight=0;
 
         }
+
+
+
+        public void inorder_iterative(){
+            Stack<Pair>tree=new Stack<>();
+            tree.push(new Pair(get_root(),false));
+            while(!tree.isEmpty()){
+
+                node current=tree.peek().Node;
+                boolean flag=tree.peek().flag;
+                tree.pop();
+
+                if(flag==true){
+                    System.out.print(current.data+" ");
+                }
+
+                else{
+
+                    if(current.right!=null)
+                        tree.push(new Pair(current.right,false));
+
+
+                    tree.push(new Pair(current,true));
+
+
+                    if(current.lift!=null)
+                        tree.push(new Pair(current.lift,false));
+
+                }
+
+            }
+        System.out.println();
+        }
+
+
+
+
+
+
+
+
+
 
 
         public boolean is_empty(){
@@ -222,6 +278,11 @@ public class binarytree {
             infexprint(current.right);
 
         }
+
+
+
+
+
 
 
     }
