@@ -9,9 +9,9 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
-//        System.out.println("hello world");
-        binarytree.BT root=new binarytree.BT(10);
-        binarytree.node current=root.get_root();
+        // System.out.println("hello world");
+        binarytree.BT root = new binarytree.BT(10);
+        binarytree.node current = root.get_root();
         root.addRecursive(current, 5);
         root.addRecursive(current, 20);
         root.addRecursive(current, 6);
@@ -23,12 +23,13 @@ public class Main {
         root.addRecursive(current, 30);
         root.postprint(current);
         System.out.println();
-        root.Left_boundary(current);
+        // root.Left_boundary(current);
+        System.out.println(root.BT_Diametar(current));
         System.out.println();
 
-//        root.infexprint(current);
-//        System.out.println();
-//        root.inorder_iterative();
+        // root.infexprint(current);
+        // System.out.println();
+        // root.inorder_iterative();
     }
 
 }

@@ -1,106 +1,87 @@
 
-    package Main;
-    import java.util.Stack;
+package Main;
+
+import java.util.Stack;
+
 /**
  *
  * @author ziad
  */
 public class binarytree {
 
-    public static class node{
+    public static class node {
 
         public int data;
         public node lift;
         public node right;
 
-        public node(int val){
-            data=val;
-            lift=null;
-            right=null;
+        public node(int val) {
+            data = val;
+            lift = null;
+            right = null;
 
         }
 
-
     };
 
-
-
-    public static class Pair{
+    public static class Pair {
         node Node;
         boolean flag;
-         public  Pair(node current,boolean f){
-            flag=f;
-            Node=current;
+
+        public Pair(node current, boolean f) {
+            flag = f;
+            Node = current;
         }
 
     };
 
-
-
-
-    public static class BT{
+    public static class BT {
 
         private node root;
         private int max;
         private int hight;
         private int leafs;
 
-
-        public BT(int val){
-            node newnode=new node(val);
-            root=newnode;
-            max=0;
-            hight=0;
+        public BT(int val) {
+            node newnode = new node(val);
+            root = newnode;
+            max = 0;
+            hight = 0;
 
         }
 
+        public void inorder_iterative() {
+            Stack<Pair> tree = new Stack<>();
+            tree.push(new Pair(get_root(), false));
+            while (!tree.isEmpty()) {
 
-
-        public void inorder_iterative(){
-            Stack<Pair>tree=new Stack<>();
-            tree.push(new Pair(get_root(),false));
-            while(!tree.isEmpty()){
-
-                node current=tree.peek().Node;
-                boolean flag=tree.peek().flag;
+                node current = tree.peek().Node;
+                boolean flag = tree.peek().flag;
                 tree.pop();
 
-                if(flag==true){
-                    System.out.print(current.data+" ");
+                if (flag == true) {
+                    System.out.print(current.data + " ");
                 }
 
-                else{
+                else {
 
-                    if(current.right!=null)
-                        tree.push(new Pair(current.right,false));
+                    if (current.right != null)
+                        tree.push(new Pair(current.right, false));
 
+                    tree.push(new Pair(current, true));
 
-                    tree.push(new Pair(current,true));
-
-
-                    if(current.lift!=null)
-                        tree.push(new Pair(current.lift,false));
+                    if (current.lift != null)
+                        tree.push(new Pair(current.lift, false));
 
                 }
 
             }
-        System.out.println();
+            System.out.println();
         }
 
-
-
-
-
-
-
-
-
-
-
-        public boolean is_empty(){
-            return root.lift==null&&root.right==null;
+        public boolean is_empty() {
+            return root.lift == null && root.right == null;
         }
-
 
         node addRecursive(node current, int value) {
             if (current == null) {
@@ -119,86 +100,63 @@ public class binarytree {
             return current;
         }
 
+        public void postprint(node current) {
 
-
-
-        public void postprint(node current){
-
-
-
-            if(current==null){
+            if (current == null) {
 
                 return;
             }
             postprint(current.lift);
             postprint(current.right);
-            System.out.print(current.data+" ");
-
-
-
-
-
+            System.out.print(current.data + " ");
 
         }
 
-
-        public node get_root()
-        {
+        public node get_root() {
             return root;
         }
 
-        public int max(node current){
+        public int max(node current) {
 
-
-
-            if(current==null)
-            {
+            if (current == null) {
                 return max;
 
             }
-            if(current.data>max)
-                max=current.data;
+            if (current.data > max)
+                max = current.data;
 
-            max=max(current.lift);
-            max=max(current.right);
-
+            max = max(current.lift);
+            max = max(current.right);
 
             return max;
 
         }
 
-        public int gethight(node current){
+        public int gethight(node current) {
 
-
-            if(current==null){
+            if (current == null) {
 
                 return 0;
             }
 
-
-
-            return Math.max( gethight(current.lift),gethight(current.right))+1;
-
-
+            return Math.max(gethight(current.lift), gethight(current.right)) + 1;
 
         }
 
-        public int countallnodes(node current)
-        {
-            if(current==null)
-            {
+        public int countallnodes(node current) {
+            if (current == null) {
 
                 return 0;
 
             }
 
-            int lifthight=countallnodes(current.lift);
-            int righthight=countallnodes(current.right);
+            int lifthight = countallnodes(current.lift);
+            int righthight = countallnodes(current.right);
 
-
-            return righthight+lifthight+1;
+            return righthight + lifthight + 1;
 
         }
+
         public int countLeafNodes(node current) {
             if (current == null) {
                 return 0;
@@ -209,101 +167,89 @@ public class binarytree {
             return countLeafNodes(current.lift) + countLeafNodes(current.right);
         }
 
-
-
-
-        public boolean searchingtree(node current,int val) {
+        public boolean searchingtree(node current, int val) {
             if (current == null) {
                 return false;
             }
-            if (current.data == val ) {
+            if (current.data == val) {
                 return true;
             }
-            return searchingtree(current.lift,val)||     searchingtree(current.right,val);
-
-
-
+            return searchingtree(current.lift, val) || searchingtree(current.right, val);
 
         }
 
+        public boolean is_perfect(node current) {
 
-
-
-
-
-
-        public  boolean is_perfect(node current){
-
-            int num=countallnodes(current);
-            int high=gethight(current)-1;
-            if(num==Math.pow(2, high+1)-1)
-            {
+            int num = countallnodes(current);
+            int high = gethight(current) - 1;
+            if (num == Math.pow(2, high + 1) - 1) {
                 return true;
-            }else
-            {
+            } else {
                 return false;
             }
 
         }
 
+        public void preprint(node current) {
 
-        public void preprint(node current){
-
-
-
-            if(current==null){
+            if (current == null) {
 
                 return;
             }
-            System.out.print(current.data+" ");
+            System.out.print(current.data + " ");
             preprint(current.lift);
             preprint(current.right);
 
-
-
-
-
-
         }
 
-
-        public void infexprint(node current)
-        {
-            if(current==null){
+        public void infexprint(node current) {
+            if (current == null) {
 
                 return;
             }
             infexprint(current.lift);
-            System.out.print(current.data+" ");
+            System.out.print(current.data + " ");
             infexprint(current.right);
 
         }
 
-
-        public void Left_boundary(node current){
-            if(current==null){
-                return ;
+        public void Left_boundary(node current) {
+            if (current == null) {
+                return;
             }
 
-            if(current.lift!=null){
-                System.out.print(current.data+" ");
+            if (current.lift != null) {
+                System.out.print(current.data + " ");
                 Left_boundary(current.lift);
-            }
-            else{
-                System.out.print(current.data+" ");
+            } else {
+                System.out.print(current.data + " ");
                 Left_boundary(current.right);
 
             }
 
         }
 
+        public int BT_Diametar(node current) {
 
+            int diametar = 0;
+            int resulte = count_hight_for_diametar(current, diametar);
+            return resulte;
 
+        }
 
+        private int count_hight_for_diametar(node current, int diametar) {
 
+            if (current == null) {
+                return 0;
+            }
 
+            int h1 = count_hight_for_diametar(current.lift, diametar);
+            int h2 = count_hight_for_diametar(current.right, diametar);
+            diametar = Math.max(diametar, h1 + h2);
+            return 1 + Math.max(h1, h2);
+
+        }
 
     }
-
 
 }
