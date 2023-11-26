@@ -1,14 +1,16 @@
-
-package Main;
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package binarytreeinjava;
 import java.util.Stack;
-
 /**
  *
  * @author ziad
  */
-public class binarytree {
-
+public class BinaryTree {
+    
+    
     public static class node {
 
         public int data;
@@ -39,14 +41,14 @@ public class binarytree {
 
         private node root;
         private int max;
-        private int hight;
-        private int leafs;
+        // private int hight;
+        // private int leafs;
 
         public BT(int val) {
             node newnode = new node(val);
             root = newnode;
             max = 0;
-            hight = 0;
+            // hight = 0;
 
         }
 
@@ -231,7 +233,7 @@ public class binarytree {
 
         public int BT_Diametar(node current) {
 
-            int diametar = 0;
+            int []diametar = new int[1];
             int resulte = count_hight_for_diametar(current, diametar);
             return resulte;
 
@@ -252,4 +254,8 @@ public class binarytree {
 
     }
 
+    
+    
+    
+    
 }
