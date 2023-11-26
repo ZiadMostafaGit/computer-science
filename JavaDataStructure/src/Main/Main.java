@@ -21,10 +21,14 @@ public class Main {
         root.addRecursive(current, 7);
         root.addRecursive(current, 17);
         root.addRecursive(current, 30);
-//        root.postprint(current);
-        root.infexprint(current);
+        root.postprint(current);
         System.out.println();
-        root.inorder_iterative();
+        root.Left_boundary(current);
+        System.out.println();
+
+//        root.infexprint(current);
+//        System.out.println();
+//        root.inorder_iterative();
     }
 
 }

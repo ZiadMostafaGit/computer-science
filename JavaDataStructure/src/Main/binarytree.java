@@ -280,6 +280,24 @@ public class binarytree {
         }
 
 
+        public void Left_boundary(node current){
+            if(current==null){
+                return ;
+            }
+
+            if(current.lift!=null){
+                System.out.print(current.data+" ");
+                Left_boundary(current.lift);
+            }
+            else{
+                System.out.print(current.data+" ");
+                Left_boundary(current.right);
+
+            }
+
+        }
+
+
 
 
 
