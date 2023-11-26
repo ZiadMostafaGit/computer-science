@@ -14,12 +14,12 @@ public class BinaryTree {
     public static class node {
 
         public int data;
-        public node lift;
+        public node left;
         public node right;
 
         public node(int val) {
             data = val;
-            lift = null;
+            left = null;
             right = null;
 
         }
@@ -72,8 +72,8 @@ public class BinaryTree {
 
                     tree.push(new Pair(current, true));
 
-                    if (current.lift != null)
-                        tree.push(new Pair(current.lift, false));
+                    if (current.left != null)
+                        tree.push(new Pair(current.left, false));
 
                 }
 
@@ -82,7 +82,7 @@ public class BinaryTree {
         }
 
         public boolean is_empty() {
-            return root.lift == null && root.right == null;
+            return root.left == null && root.right == null;
         }
 
         node addRecursive(node current, int value) {
@@ -91,7 +91,7 @@ public class BinaryTree {
             }
 
             if (value < current.data) {
-                current.lift = addRecursive(current.lift, value);
+                current.left = addRecursive(current.left, value);
             } else if (value > current.data) {
                 current.right = addRecursive(current.right, value);
             } else {
@@ -108,7 +108,7 @@ public class BinaryTree {
 
                 return;
             }
-            postprint(current.lift);
+            postprint(current.left);
             postprint(current.right);
             System.out.print(current.data + " ");
 
@@ -127,7 +127,7 @@ public class BinaryTree {
             if (current.data > max)
                 max = current.data;
 
-            max = max(current.lift);
+            max = max(current.left);
             max = max(current.right);
 
             return max;
@@ -141,7 +141,7 @@ public class BinaryTree {
                 return 0;
             }
 
-            return Math.max(gethight(current.lift), gethight(current.right)) + 1;
+            return Math.max(gethight(current.left), gethight(current.right)) + 1;
 
         }
 
@@ -152,7 +152,7 @@ public class BinaryTree {
 
             }
 
-            int lifthight = countallnodes(current.lift);
+            int lifthight = countallnodes(current.left);
             int righthight = countallnodes(current.right);
 
             return righthight + lifthight + 1;
@@ -163,10 +163,10 @@ public class BinaryTree {
             if (current == null) {
                 return 0;
             }
-            if (current.lift == null && current.right == null) {
+            if (current.left == null && current.right == null) {
                 return 1;
             }
-            return countLeafNodes(current.lift) + countLeafNodes(current.right);
+            return countLeafNodes(current.left) + countLeafNodes(current.right);
         }
 
         public boolean searchingtree(node current, int val) {
@@ -176,7 +176,7 @@ public class BinaryTree {
             if (current.data == val) {
                 return true;
             }
-            return searchingtree(current.lift, val) || searchingtree(current.right, val);
+            return searchingtree(current.left, val) || searchingtree(current.right, val);
 
         }
 
@@ -199,7 +199,7 @@ public class BinaryTree {
                 return;
             }
             System.out.print(current.data + " ");
-            preprint(current.lift);
+            preprint(current.left);
             preprint(current.right);
 
         }
@@ -209,7 +209,7 @@ public class BinaryTree {
 
                 return;
             }
-            infexprint(current.lift);
+            infexprint(current.left);
             System.out.print(current.data + " ");
             infexprint(current.right);
 
@@ -220,9 +220,9 @@ public class BinaryTree {
                 return;
             }
 
-            if (current.lift != null) {
+            if (current.left != null) {
                 System.out.print(current.data + " ");
-                Left_boundary(current.lift);
+                Left_boundary(current.left);
             } else {
                 System.out.print(current.data + " ");
                 Left_boundary(current.right);
@@ -230,27 +230,27 @@ public class BinaryTree {
             }
 
         }
+public int BT_Diameter(node current) {
+    if (current == null) {
+        return 0;
+    }
 
-        public int BT_Diametar(node current) {
+    int[] diameter = new int[1];
+    count_height_for_diameter(current, diameter);
+    return diameter[0];
+}
 
-            int []diametar = new int[1];
-            int resulte = count_hight_for_diametar(current, diametar);
-            return resulte;
+private int count_height_for_diameter(node current, int[] diameter) {
+    if (current == null) {
+        return 0;
+    }
 
-        }
+    int h1 = count_height_for_diameter(current.left, diameter);
+    int h2 = count_height_for_diameter(current.right, diameter);
 
-        private int count_hight_for_diametar(node current, int diametar) {
-
-            if (current == null) {
-                return 0;
-            }
-
-            int h1 = count_hight_for_diametar(current.lift, diametar);
-            int h2 = count_hight_for_diametar(current.right, diametar);
-            diametar = Math.max(diametar, h1 + h2);
-            return 1 + Math.max(h1, h2);
-
-        }
+    diameter[0] = Math.max(diameter[0], h1 + h2);
+    return 1 + Math.max(h1, h2);
+}
 
     }
 

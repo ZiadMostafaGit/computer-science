@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package binarytreeinjava;
 
-/**
- *
- * @author ziad
- */
 public class MainFile {
 
    
@@ -27,14 +20,8 @@ public class MainFile {
                 root.postprint(current);
                 System.out.println();
                 // root.Left_boundary(current);
-                System.out.println(root.BT_Diametar(current));
+                System.out.println(root.BT_Diameter(current));
                 System.out.println();
 
         }
-    
-    
-    
-    
-    
-    
 }
