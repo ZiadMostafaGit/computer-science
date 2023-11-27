@@ -17,26 +17,25 @@ int main()
     // cout << bt.Get_Diametar(current) << endl;
     bt.Level_by_Level_iterative();
 
-    //
-    //    std::cout << "Postorder Traversal: ";
-    //    bt.postOrderPrint(bt.getRoot());
-    //    std::cout << std::endl;
+    // cout << "Postorder Traversal: ";
+    // bt.postOrderPrint(current);
+    // cout << endl;
 
-    //    std::cout << "Max Value: " << bt.getMax(bt.getRoot()) << std::endl;
-    //    std::cout << "Tree Height: " << bt.getHeight(bt.getRoot()) << std::endl;
-    //    std::cout << "Total Nodes: " << bt.countAllNodes(bt.getRoot()) << std::endl;
-    //    std::cout << "Leaf Nodes: " << bt.countLeafNodes(bt.getRoot()) << std::endl;
-    //
-    //    std::cout << "Search for 12: " << (bt.searchTree(bt.getRoot(), 12) ? "Found" : "Not Found") << std::endl;
-    //    std::cout << "Is Perfect Binary Tree: " << (bt.isPerfect(bt.getRoot()) ? "Yes" : "No") << std::endl;
-    //
-    //    std::cout << "Preorder Traversal: ";
-    //    bt.preOrderPrint(bt.getRoot());
-    //    std::cout << std::endl;
-    //
-    //    std::cout << "Inorder Traversal: ";
-    //    bt.inOrderPrint(bt.getRoot());
-    //    std::cout << std::endl;
+    // cout << "Max Value: " << bt.getMax(current) << endl;
+    // cout << "Tree Height: " << bt.getHeight(current) << endl;
+    // cout << "Total Nodes: " << bt.countAllNodes(current) << endl;
+    // cout << "Leaf Nodes: " << bt.countLeafNodes(current) << endl;
+
+    // cout << "Search for 12: " << (bt.searchTree(current, 12) ? "Found" : "Not Found") << endl;
+    // cout << "Is Perfect Binary Tree: " << (bt.isPerfect(current) ? "Yes" : "No") << endl;
+
+    // cout << "Preorder Traversal: ";
+    // bt.preOrderPrint(current);
+    // cout << endl;
+
+    // cout << "Inorder Traversal: ";
+    // bt.inOrderPrint(current);
+    // cout << endl;
     //    system("pause");
     return 0;
 }

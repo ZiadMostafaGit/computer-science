@@ -63,7 +63,7 @@ public:
         }
         postOrderPrint(current->left);
         postOrderPrint(current->right);
-        std::cout << current->data << " ";
+        cout << current->data << " ";
     }
 
     Node *getroot()
