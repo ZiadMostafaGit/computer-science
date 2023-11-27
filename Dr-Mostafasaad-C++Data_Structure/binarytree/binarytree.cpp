@@ -190,22 +190,28 @@ public:
 
     void Level_by_Level_iterative()
     {
-
+        int level = 0;
         queue<Node *> qu;
         qu.push(getroot());
 
         while (!qu.empty())
         {
 
-            Node *current = qu.front();
-            qu.pop();
+            cout << "Level " << level << ": ";
+            int sz = qu.size();
+            while (sz--)
+            {
+                Node *current = qu.front();
+                qu.pop();
 
-            cout << current->data << " ";
-            if (current->left)
-                qu.push(current->left);
-            if (current->right)
-                qu.push(current->right);
+                cout << current->data << " ";
+                if (current->left)
+                    qu.push(current->left);
+                if (current->right)
+                    qu.push(current->right);
+            }
+            level++;
+            cout << endl;
         }
-        cout << endl;
     }
 };

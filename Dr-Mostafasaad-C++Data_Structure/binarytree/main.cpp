@@ -5,17 +5,14 @@ int main()
 {
     BinaryTree bt(10);
     Node *current = bt.getroot();
-    bt.addRecursive(current, 5);
-    bt.addRecursive(current, 20);
-    bt.addRecursive(current, 6);
-    bt.addRecursive(current, 8);
-    bt.addRecursive(current, 15);
-    bt.addRecursive(current, 22);
-    bt.addRecursive(current, 7);
-    bt.addRecursive(current, 17);
-    bt.addRecursive(current, 30);
-    // cout << bt.Get_Diametar(current) << endl;
-    bt.Level_by_Level_iterative();
+    int arr[20] = {10, 5, 15, 3, 7, 12, 18, 2, 4, 6, 8, 11, 13, 16, 19, 1, 9, 14, 17, 20};
+    for (int c : arr)
+    {
+
+        bt.addRecursive(current, c);
+    }
+    cout << bt.Get_Diametar(current) << endl;
+    // bt.Level_by_Level_iterative();
 
     // cout << "Postorder Traversal: ";
     // bt.postOrderPrint(current);
