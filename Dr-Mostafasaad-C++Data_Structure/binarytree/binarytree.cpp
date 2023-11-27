@@ -2,21 +2,27 @@
 #include <cmath>
 #include <climits>
 #include <algorithm>
+#include <queue>
+using namespace std;
 
+class Node
+{
+public:
+    int data;
+    Node *left;
+    Node *right;
 
+    Node(int val)
+    {
+        data = val;
+        left = nullptr;
+        right = nullptr;
+    }
+};
 
 class BinaryTree
 {
 private:
-    struct Node
-    {
-        int data;
-        Node *left;
-        Node *right;
-
-        Node(int val) : data(val), left(nullptr), right(nullptr) {}
-    };
-
     Node *root;
 
 public:
@@ -60,7 +66,7 @@ public:
         std::cout << current->data << " ";
     }
 
-    Node *getRoot()
+    Node *getroot()
     {
         return root;
     }
@@ -157,5 +163,49 @@ public:
         inOrderPrint(current->left);
         std::cout << current->data << " ";
         inOrderPrint(current->right);
+    }
+
+    int Get_Diametar(Node *current)
+    {
+
+        int diametar = 0;
+        Get_Hight_for_diametar(current, diametar);
+        return diametar;
+    }
+
+    int Get_Hight_for_diametar(Node *current, int &diametar)
+    {
+
+        if (!current)
+        {
+            return 0;
+        }
+
+        int h1 = Get_Hight_for_diametar(current->left, diametar);
+        int h2 = Get_Hight_for_diametar(current->right, diametar);
+
+        diametar = max(diametar, (h1 + h2));
+        return 1 + max(h1, h2);
+    }
+
+    void Level_by_Level_iterative()
+    {
+
+        queue<Node *> qu;
+        qu.push(getroot());
+
+        while (!qu.empty())
+        {
+
+            Node *current = qu.front();
+            qu.pop();
+
+            cout << current->data << " ";
+            if (current->left)
+                qu.push(current->left);
+            if (current->right)
+                qu.push(current->right);
+        }
+        cout << endl;
     }
 };

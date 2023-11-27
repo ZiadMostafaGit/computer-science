@@ -11,6 +11,7 @@ class Node:
 
 class BinaryTree:
     def __init__(self, value):
+        
         self.root = Node(value)
 
     def add_recursive(self, current, value):
@@ -24,17 +25,21 @@ class BinaryTree:
 
         return current
 
-    def printBoundaryLeft(self, root):
-        if root:
-            if root.left:
-                # to ensure top down order, print the node
-                # before calling itself for left subtree
-                print(root.data, end=" ")
-                self.printBoundaryLeft(root.left)
+    def get_root(self):
+        return self.root
+    
 
-            elif root.right:
-                print(root.data, end=" ")
-                self.printBoundaryLeft(root.right)
+
+    def get_diametar(self,current,diametar):
+
+        if  not current:
+            return 0
+        
+        h1=self.get_diametar(current.left,diametar)
+        h2=self.get_diametar(current.right,diametar)
+        diametar=max(diametar,h1+h2)
+        return 1+max(h1,h2)
+
 
     def post_order_print(self, current):
         if current is None:
@@ -119,6 +124,38 @@ class BinaryTree:
                 if current.left:
                     nodes.append((current.left, False))
         print("\n")
+
+
+
+    def printBoundaryLeft(self, root):
+        if root:
+            if root.left:
+                # to ensure top down order, print the node
+                # before calling itself for left subtree
+                print(root.data, end=" ")
+                self.printBoundaryLeft(root.left)
+
+            elif root.right:
+                print(root.data, end=" ")
+                self.printBoundaryLeft(root.right)  
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #

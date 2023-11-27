@@ -2,6 +2,7 @@ import binarytree as bt
 
 # import turtle
 if __name__ == "__main__":
+    # current=bt.BinaryTree.get_root()
     binary_tree = bt.BinaryTree(10)
     binary_tree.add_recursive(binary_tree.root, 5)
     binary_tree.add_recursive(binary_tree.root, 20)
@@ -17,6 +18,8 @@ if __name__ == "__main__":
     print("\n")
     binary_tree.printBoundaryLeft(binary_tree.root)
     print("\n")
+
+    print(binary_tree.get_diametar(binary_tree.root,0))
 
     # print("inorder Traversal: ", end="")
     # binary_tree.in_order_print(binary_tree.root)

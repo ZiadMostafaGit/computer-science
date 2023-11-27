@@ -17,10 +17,11 @@ public class MainFile {
                 root.addRecursive(current, 7);
                 root.addRecursive(current, 17);
                 root.addRecursive(current, 30);
-                root.postprint(current);
-                System.out.println();
+//                root.postprint(current);
+//                System.out.println();
                 // root.Left_boundary(current);
-                System.out.println(root.BT_Diameter(current));
+//                System.out.println(root.BT_Diameter(current));
+                root.Level_by_Level_Traversal();
                 System.out.println();
 
         }

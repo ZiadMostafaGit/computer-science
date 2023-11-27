@@ -3,33 +3,40 @@
 
 int main()
 {
-    BinaryTree binaryTree(10);
-    binaryTree.addRecursive(binaryTree.getRoot(), 5);
-    binaryTree.addRecursive(binaryTree.getRoot(), 15);
-    binaryTree.addRecursive(binaryTree.getRoot(), 3);
-    binaryTree.addRecursive(binaryTree.getRoot(), 7);
-    binaryTree.addRecursive(binaryTree.getRoot(), 12);
-    binaryTree.addRecursive(binaryTree.getRoot(), 18);
+    BinaryTree bt(10);
+    Node *current = bt.getroot();
+    bt.addRecursive(current, 5);
+    bt.addRecursive(current, 20);
+    bt.addRecursive(current, 6);
+    bt.addRecursive(current, 8);
+    bt.addRecursive(current, 15);
+    bt.addRecursive(current, 22);
+    bt.addRecursive(current, 7);
+    bt.addRecursive(current, 17);
+    bt.addRecursive(current, 30);
+    // cout << bt.Get_Diametar(current) << endl;
+    bt.Level_by_Level_iterative();
 
-    std::cout << "Postorder Traversal: ";
-    binaryTree.postOrderPrint(binaryTree.getRoot());
-    std::cout << std::endl;
+    //
+    //    std::cout << "Postorder Traversal: ";
+    //    bt.postOrderPrint(bt.getRoot());
+    //    std::cout << std::endl;
 
-    std::cout << "Max Value: " << binaryTree.getMax(binaryTree.getRoot()) << std::endl;
-    std::cout << "Tree Height: " << binaryTree.getHeight(binaryTree.getRoot()) << std::endl;
-    std::cout << "Total Nodes: " << binaryTree.countAllNodes(binaryTree.getRoot()) << std::endl;
-    std::cout << "Leaf Nodes: " << binaryTree.countLeafNodes(binaryTree.getRoot()) << std::endl;
-
-    std::cout << "Search for 12: " << (binaryTree.searchTree(binaryTree.getRoot(), 12) ? "Found" : "Not Found") << std::endl;
-    std::cout << "Is Perfect Binary Tree: " << (binaryTree.isPerfect(binaryTree.getRoot()) ? "Yes" : "No") << std::endl;
-
-    std::cout << "Preorder Traversal: ";
-    binaryTree.preOrderPrint(binaryTree.getRoot());
-    std::cout << std::endl;
-
-    std::cout << "Inorder Traversal: ";
-    binaryTree.inOrderPrint(binaryTree.getRoot());
-    std::cout << std::endl;
-    system("pause");
+    //    std::cout << "Max Value: " << bt.getMax(bt.getRoot()) << std::endl;
+    //    std::cout << "Tree Height: " << bt.getHeight(bt.getRoot()) << std::endl;
+    //    std::cout << "Total Nodes: " << bt.countAllNodes(bt.getRoot()) << std::endl;
+    //    std::cout << "Leaf Nodes: " << bt.countLeafNodes(bt.getRoot()) << std::endl;
+    //
+    //    std::cout << "Search for 12: " << (bt.searchTree(bt.getRoot(), 12) ? "Found" : "Not Found") << std::endl;
+    //    std::cout << "Is Perfect Binary Tree: " << (bt.isPerfect(bt.getRoot()) ? "Yes" : "No") << std::endl;
+    //
+    //    std::cout << "Preorder Traversal: ";
+    //    bt.preOrderPrint(bt.getRoot());
+    //    std::cout << std::endl;
+    //
+    //    std::cout << "Inorder Traversal: ";
+    //    bt.inOrderPrint(bt.getRoot());
+    //    std::cout << std::endl;
+    //    system("pause");
     return 0;
 }

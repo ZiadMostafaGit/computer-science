@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package binarytreeinjava;
+import java.util.ArrayDeque;
 import java.util.Stack;
+import java.util.Queue;
+
 /**
  *
  * @author ziad
@@ -39,7 +42,7 @@ public class BinaryTree {
 
     public static class BT {
 
-        private node root;
+        private  node root;
         private int max;
         // private int hight;
         // private int leafs;
@@ -230,7 +233,7 @@ public class BinaryTree {
             }
 
         }
-public int BT_Diameter(node current) {
+        public int BT_Diameter(node current) {
     if (current == null) {
         return 0;
     }
@@ -240,7 +243,7 @@ public int BT_Diameter(node current) {
     return diameter[0];
 }
 
-private int count_height_for_diameter(node current, int[] diameter) {
+        private int count_height_for_diameter(node current, int[] diameter) {
     if (current == null) {
         return 0;
     }
@@ -251,6 +254,34 @@ private int count_height_for_diameter(node current, int[] diameter) {
     diameter[0] = Math.max(diameter[0], h1 + h2);
     return 1 + Math.max(h1, h2);
 }
+
+        
+        
+        
+    public void Level_by_Level_Traversal()
+    {
+        Queue<node> qu = new ArrayDeque<>();
+        qu.add(get_root());
+
+        while (!qu.isEmpty())
+        {
+          node current = qu.remove();
+
+          if (current.left != null)
+            {
+              qu.add(current.left);
+            }
+
+          if (current.right != null)
+            {
+               qu.add(current.right);
+            }
+          
+           System.out.print(current.data + " ");
+        }
+    }
+
+
 
     }
 
