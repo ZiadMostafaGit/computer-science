@@ -11,7 +11,9 @@ int main()
 
         bt.addRecursive(current, c);
     }
-    cout << bt.Get_Diametar(current) << endl;
+
+    bt.Level_by_Level_recursive(current);
+    // cout << bt.Get_Diametar(current) << endl;
     // bt.Level_by_Level_iterative();
 
     // cout << "Postorder Traversal: ";

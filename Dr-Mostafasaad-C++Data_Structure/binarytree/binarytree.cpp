@@ -85,14 +85,27 @@ public:
         return std::max(max, std::max(leftMax, rightMax));
     }
 
-    int getHeight(Node *current)
-    {
-        if (current == nullptr)
-        {
-            return 0;
-        }
+    // int getHeight(Node *current)
+    // {
+    //     if (current == nullptr)
+    //     {
+    //         return 0;
+    //     }
+    //
+    //     return std::max(getHeight(current->left), getHeight(current->right)) + 1;
+    // }
 
-        return std::max(getHeight(current->left), getHeight(current->right)) + 1;
+    int getHeight(Node *root)
+    {
+        if (root == nullptr)
+            return 0;
+        else
+        {
+            int leftHeight = getHeight(root->left);
+            int rightHeight = getHeight(root->right);
+
+            return max(leftHeight, rightHeight) + 1;
+        }
     }
 
     int countAllNodes(Node *current)
@@ -213,5 +226,35 @@ public:
             level++;
             cout << endl;
         }
+    }
+
+    void print_level(Node *cur, int level)
+    {
+
+        if (level == 0)
+        {
+            cout << cur->data << " ";
+        }
+        else if (level > 0)
+        {
+            if (cur->left)
+            {
+                print_level(cur->left, level - 1);
+            }
+            if (cur->right)
+            {
+                print_level(cur->right, level - 1);
+            }
+        }
+    }
+
+    void Level_by_Level_recursive(Node *current)
+    {
+        int th = getHeight(current);
+        for (int i = 0; i < th; i++)
+        {
+            print_level(current, i);
+        }
+        cout << endl;
     }
 };
