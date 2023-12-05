@@ -3,6 +3,7 @@
 #include <climits>
 #include <algorithm>
 #include <queue>
+#include "binarytree.h"
 using namespace std;
 
 class Node
@@ -26,17 +27,17 @@ private:
     Node *root;
 
 public:
-    BinaryTree(int val)
+    BinaryTree::BinaryTree(int val)
     {
         root = new Node(val);
     }
 
-    bool isEmpty()
+    bool BinaryTree::isEmpty()
     {
         return root == nullptr;
     }
 
-    Node *addRecursive(Node *current, int value)
+    Node *BinaryTree::addRecursive(Node *current, int value)
     {
         if (current == nullptr)
         {
@@ -55,7 +56,7 @@ public:
         return current;
     }
 
-    void postOrderPrint(Node *current)
+    void BinaryTree::postOrderPrint(Node *current)
     {
         if (current == nullptr)
         {
@@ -66,7 +67,7 @@ public:
         cout << current->data << " ";
     }
 
-    Node *getroot()
+    Node *BinaryTree::getroot()
     {
         return root;
     }
@@ -95,7 +96,7 @@ public:
     //     return std::max(getHeight(current->left), getHeight(current->right)) + 1;
     // }
 
-    int getHeight(Node *root)
+    int BinaryTree::getHeight(Node *root)
     {
         if (root == nullptr)
             return 0;
@@ -108,7 +109,7 @@ public:
         }
     }
 
-    int countAllNodes(Node *current)
+    int BinaryTree::countAllNodes(Node *current)
     {
         if (current == nullptr)
         {
@@ -118,7 +119,7 @@ public:
         return countAllNodes(current->left) + countAllNodes(current->right) + 1;
     }
 
-    int countLeafNodes(Node *current)
+    int BinaryTree::countLeafNodes(Node *current)
     {
         if (current == nullptr)
         {
@@ -133,7 +134,7 @@ public:
         return countLeafNodes(current->left) + countLeafNodes(current->right);
     }
 
-    bool searchTree(Node *current, int val)
+    bool BinaryTree::searchTree(Node *current, int val)
     {
         if (current == nullptr)
         {
@@ -148,7 +149,7 @@ public:
         return searchTree(current->left, val) || searchTree(current->right, val);
     }
 
-    bool isPerfect(Node *current)
+    bool BinaryTree::isPerfect(Node *current)
     {
         int num = countAllNodes(current);
         int height = getHeight(current) - 1;
@@ -156,7 +157,7 @@ public:
         return num == std::pow(2, height + 1) - 1;
     }
 
-    void preOrderPrint(Node *current)
+    void BinaryTree::preOrderPrint(Node *current)
     {
         if (current == nullptr)
         {
@@ -167,7 +168,7 @@ public:
         preOrderPrint(current->right);
     }
 
-    void inOrderPrint(Node *current)
+    void BinaryTree::inOrderPrint(Node *current)
     {
         if (current == nullptr)
         {
@@ -178,7 +179,7 @@ public:
         inOrderPrint(current->right);
     }
 
-    int Get_Diametar(Node *current)
+    int BinaryTree::Get_Diametar(Node *current)
     {
 
         int diametar = 0;
@@ -186,7 +187,7 @@ public:
         return diametar;
     }
 
-    int Get_Hight_for_diametar(Node *current, int &diametar)
+    int BinaryTree::Get_Hight_for_diametar(Node *current, int &diametar)
     {
 
         if (!current)
@@ -201,7 +202,7 @@ public:
         return 1 + max(h1, h2);
     }
 
-    void Level_by_Level_iterative()
+    void BinaryTree::Level_by_Level_iterative()
     {
         int level = 0;
         queue<Node *> qu;
@@ -228,33 +229,83 @@ public:
         }
     }
 
-    void print_level(Node *cur, int level)
+    void BinaryTree::print_level_by_level_rec(Node *cur)
     {
 
+        int sz = getHeight(cur);
+        for (int level = 0; level < sz; level++)
+        {
+            Printlevel(level, cur);
+        }
+    }
+
+    void BinaryTree::Printlevel(int level, Node *cur)
+    {
         if (level == 0)
         {
-            cout << cur->data << " ";
+            return;
         }
         else if (level > 0)
         {
+
             if (cur->left)
             {
-                print_level(cur->left, level - 1);
+                Printlevel(level--, cur->left);
             }
-            if (cur->right)
+            else if (cur->right)
             {
-                print_level(cur->right, level - 1);
+                Printlevel(level--, cur->right);
             }
         }
-    }
 
-    void Level_by_Level_recursive(Node *current)
-    {
-        int th = getHeight(current);
-        for (int i = 0; i < th; i++)
-        {
-            print_level(current, i);
-        }
-        cout << endl;
-    }
+    } 
+    
+    
+    
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    // void print_level(Node *cur, int level)
+      // {
+
+    //     if (level == 0)
+    //     {
+    //         cout << cur->data << " ";
+    //     }
+    //     else if (level > 0)
+    //     {
+    //         if (cur->left)
+    //         {
+    //             print_level(cur->left, level - 1);
+    //         }
+    //         if (cur->right)
+    //         {
+    //             print_level(cur->right, level - 1);
+    //         }
+    //     }
+    // }
+
+    // void Level_by_Level_recursive(Node *current)
+    // {
+    //     int th = getHeight(current);
+    //     for (int i = 0; i < th; i++)
+    //     {
+    //         print_level(current, i);
+    //     }
+    //     cout << endl;
+    // }
 };
