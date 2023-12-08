@@ -6,12 +6,16 @@
 #include "binarytree.h"
 using namespace std;
 
+
+
     Node::Node(int val)
     {
         data = val;
         left = nullptr;
         right = nullptr;
-    }
+    };
+
+
 
 
     BinaryTree::BinaryTree(int val)
@@ -239,9 +243,6 @@ using namespace std;
     }
 }
 
-    
-    
-    
 
 
 
@@ -251,14 +252,16 @@ using namespace std;
 
 
 
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
     // void print_level(Node *cur, int level)
       // {
 
