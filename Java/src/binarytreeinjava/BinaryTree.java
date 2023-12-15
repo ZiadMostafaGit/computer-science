@@ -275,7 +275,7 @@ public class BinaryTree {
         public void Level_by_Level_rec(node current)
         {
 
-            int sz = gethight(current)-1;
+            int sz = gethight(current);
             for (int level = 0; level < sz; level++)
             {
 
@@ -296,11 +296,11 @@ public class BinaryTree {
 
                 if (current.left != null)
                 {
-                    Printlevel(current.left, level--);
+                    Printlevel(current.left, level-1);
                 }
                 if (current.right != null)
                 {
-                    Printlevel(current.right, level--);
+                    Printlevel(current.right, level-1);
                 }
 
             }
