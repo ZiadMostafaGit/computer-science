@@ -1,5 +1,7 @@
 
 package binarytreeinjava;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class MainFile {
 
@@ -21,10 +23,30 @@ public class MainFile {
 //                System.out.println();
                 // root.Left_boundary(current);
 //                System.out.println(root.BT_Diameter(current));
-                root.Level_by_Level_Traversal(root);
-                System.out.println();
-                root.Level_by_Level_rec(current);
-                System.out.println();
+//                root.Level_by_Level_Traversal(root);
+//                System.out.println();
+//                root.Level_by_Level_rec(current);
+
+//                System.out.println();
+                Deque<Integer>predeque=new ArrayDeque<>();
+                Deque<Integer>indeque=new ArrayDeque<>();
+                
+                    predeque=root.PreOrderDeque(root);
+                    indeque=root.InOrderDeque(root);
+                    
+                    for(Integer elemint:predeque){
+                        System.out.print(elemint+" ");
+                    }
+                    System.out.println();
+                    for(Integer elemint:indeque){
+                        System.out.print(elemint+" ");
+                    }
+                    System.out.println();
+                    
+                    root.inorder_iterative();
+
+
+
 //                System.out.println(root.gethight(current)-1);
         }
 }

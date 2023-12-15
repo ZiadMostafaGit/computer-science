@@ -4,7 +4,7 @@ package binarytreeinjava;
 import java.util.ArrayDeque;
 import java.util.Stack;
 import java.util.Queue;
-
+import java.util.Deque;
 /**
  *
  * @author ziad
@@ -306,7 +306,57 @@ public class BinaryTree {
             }
 
         }
+        
+        public void PreDeque(node root,Deque<Integer>Qarr){
+            if(root==null){
+                return ;
+            }
+            
+            Qarr.add(root.data);
+            if(root.left!=null){
+                PreDeque(root.left, Qarr);
+            }
+            if(root.right!=null){
+                PreDeque(root.right, Qarr);
+            }
+        }
+    
+        public Deque<Integer> PreOrderDeque(BT root){
+            
+            Deque<Integer>arr=new ArrayDeque<>();
+            PreDeque(root.get_root(),arr);
+            return arr;
+        }
+        
+        public void InDeque(node root,Deque<Integer>Qarr){
+            if(root==null){
+                return ;
+            }
+            
+            if(root.left!=null)
+            {
+                InDeque(root.left, Qarr);
+            }
+            
+            Qarr.add(root.data);
 
+            if(root.right!=null)
+            {
+                InDeque(root.right, Qarr);
+            }
+        }
+         
+        public Deque<Integer> InOrderDeque(BT root){
+            
+            Deque<Integer>arr=new ArrayDeque<>();
+            InDeque(root.get_root(),arr);
+            return arr;
+        }
+    
+    
+    
+    
+    
     }
 
 }
