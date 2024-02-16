@@ -27,6 +27,8 @@ public:
     void postOrderPrint(Node *current);
     Node *getroot();
     int getMax(Node *current);
+    int newgetmax(Node *current);
+    int getmin(Node *current);
     int getHeight(Node *root);
     int countAllNodes(Node *current);
     int countLeafNodes(Node *current);

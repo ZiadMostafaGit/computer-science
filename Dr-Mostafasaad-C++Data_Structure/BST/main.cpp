@@ -1,5 +1,6 @@
 #include <iostream>
 #include "BST.cpp"
+using namespace std;
 
 int main()
 {
@@ -12,7 +13,10 @@ int main()
         bt.addRecursive(current, c);
     }
 
-    bt.Level_by_Level_recursive(current);
+    bt.inOrderPrint(current);
+    cout << endl;
+    int max = bt.newgetmax(current);
+    cout << max << endl;
     // cout << bt.Get_Diametar(current) << endl;
     // bt.Level_by_Level_iterative();
 
@@ -36,5 +40,4 @@ int main()
     // bt.inOrderPrint(current);
     // cout << endl;
     //    system("pause");
-    return 0;
 }

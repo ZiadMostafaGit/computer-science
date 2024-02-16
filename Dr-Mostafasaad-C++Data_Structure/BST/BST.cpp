@@ -58,7 +58,7 @@ Node *BST::getroot()
     return root;
 }
 
-int getMax(Node *current)
+int BST::getMax(Node *current)
 {
     if (current == nullptr)
     {
@@ -70,6 +70,27 @@ int getMax(Node *current)
     int rightMax = getMax(current->right);
 
     return std::max(max, std::max(leftMax, rightMax));
+}
+
+int BST::newgetmax(Node *current)
+{
+
+    while (current->right != nullptr)
+    {
+        current = current->right;
+    }
+
+    return current->data;
+}
+
+int BST::getmin(Node *current)
+{
+    while (current->left != nullptr)
+    {
+        current = current->left;
+    }
+
+    return current->data;
 }
 
 // int getHeight(Node *current)
