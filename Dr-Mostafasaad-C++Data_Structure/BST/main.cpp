@@ -1,9 +1,9 @@
 #include <iostream>
-#include "binarytree.cpp"
+#include "BST.cpp"
 
 int main()
 {
-    BinaryTree bt(10);
+    BST bt(10);
     Node *current = bt.getroot();
     int arr[20] = {10, 5, 15, 3, 7, 12, 18, 2, 4, 6, 8, 11, 13, 16, 19, 1, 9, 14, 17, 20};
     for (int c : arr)

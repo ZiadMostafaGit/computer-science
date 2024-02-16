@@ -9,18 +9,19 @@ public:
     int data;
     Node *left;
     Node *right;
+
 public:
     Node(int val);
 };
 
-class BinaryTree
+class BST
 {
 
 private:
     Node *root;
 
 public:
-    BinaryTree(int val);
+    BST(int val);
     bool isEmpty();
     Node *addRecursive(Node *current, int value);
     void postOrderPrint(Node *current);
@@ -37,5 +38,5 @@ public:
     int Get_Hight_for_diametar(Node *current, int &diametar);
     void Level_by_Level_iterative();
     void Level_by_Level_recursive(Node *cur);
-    void Printlevel(int level,Node *cur);
+    void Printlevel(int level, Node *cur);
 };
