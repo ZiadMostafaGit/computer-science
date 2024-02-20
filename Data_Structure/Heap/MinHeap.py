@@ -86,11 +86,9 @@ class MinHeap:
 
 
 
-    def isheap(self):
-        copy=self.array
-        res=True
-        temp=self.top()
-        
+    
+
+
 
 
 
