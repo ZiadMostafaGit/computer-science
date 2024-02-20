@@ -1,8 +1,14 @@
 class MinHeap:
 
-    def __init__(self) -> None:
-        self.array = []
-        self.size = 0
+    def __init__(self,lst) -> None:
+        self.array = lst
+        self.size = len(lst)
+        self.heapify()
+
+
+    def heapify(self):
+        for i in range((self.size//2)-1,-1,-1):
+            self.heapify_down(i)   
 
     def _left(self, node):
         p = 2 * node + 1
@@ -35,7 +41,7 @@ class MinHeap:
 
     def heapify_up(self, child):
         parent = self._parent(child)
-        if parent == 0 or self.array[parent] <= self.array[child]:
+        if parent == -1 or self.array[parent] <= self.array[child]:
             return
         self.array[child], self.array[parent] = self.array[parent], self.array[child]
         self.heapify_up(parent)
@@ -61,15 +67,31 @@ class MinHeap:
             self.heapify_down(left_child)
 
 
-heap = MinHeap()
-heap.push(5)
-heap.push(66)
-heap.push(51)
-heap.push(523)
-heap.push(56)
-heap.push(115)
-heap.push(5435)
 
-print(heap.array)
-heap.pop()
-print(heap.array)
+
+    def find_smaller_value(self,value):
+        thecopy=self.array
+        temp=self.top()
+        result=[]
+        while temp<value:
+
+            result.append(self.pop())
+            temp=self.top()
+
+        self.array=thecopy
+        return result    
+
+
+
+
+
+
+    def isheap(self):
+        copy=self.array
+        res=True
+        temp=self.top()
+        
+
+
+
+
